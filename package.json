@@ -1,6 +1,6 @@
 {
   "name": "hubot-pad",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "wjsekfghks@gmail.com",
   "description": "hubot script for pad",
   "dependencies": {},

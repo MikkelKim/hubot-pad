@@ -13,6 +13,8 @@ module.exports = (robot) ->
   leaderSkillDict = require('./leaderSkill')
   activeSkillDict = require('./activeSkill')
 
+  padxUrl = "http://puzzledragonx.com/en/monster.asp?n="
+
   getMonsterInfo = (id) ->
     for monster in monsterDict
       return monster if parseInt(monster['id'], 10) == id
@@ -35,11 +37,12 @@ module.exports = (robot) ->
     activeSkill = monsterInfo['active_skill']
     activeSkillInfo = getActiveSkillInfo(id, activeSkill)
 
-    text += monsterInfo['name'] + "\n"
-    text += "Rarity: " + monsterInfo['rarity'] + "\tMax ATK: " + monsterInfo['atk_max'] + "\tMax HP: " + monsterInfo['hp_max'] + "\tMax RCV: " + monsterInfo['rcv_max'] + "\n"
-    text += "Leader Skill: " + leaderSkillInfo['effect'] + "\n"
-    text += "Active Skill: " + activeSkillInfo['effect'] + "\n"
-    text += "Max CD: " + activeSkillInfo['max_cooldown'] + "\tMin CD: " + activeSkillInfo['min_cooldown'] + "\n\n"
+    emoji = ":pad_" + id + ":"
+    text += "### " + emoji + " [" + monsterInfo['name'] + "]" + "(" + padxUrl + id + ")" + "\n"
+    text += "**Rarity:** " + monsterInfo['rarity'] + " Stars" + "\t**Max ATK:** " + monsterInfo['atk_max'] + "\t**Max HP:** " + monsterInfo['hp_max'] + "\t**Max RCV:** " + monsterInfo['rcv_max'] + "\n"
+    text += "**Leader Skill:** " + leaderSkillInfo['effect'] + "\n"
+    text += "**Active Skill:** " + activeSkillInfo['effect'] + "\n"
+    text += "**Max CD:** " + activeSkillInfo['max_cooldown'] + "\t**Min CD:** " + activeSkillInfo['min_cooldown'] + "\n\n"
     return text
 
   robot.respond /(pad)( me)? (.*)/i, (msg) ->
