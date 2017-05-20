@@ -1,0 +1,8 @@
+{
+  "name": "hubot-pad",
+  "version": "0.0.1",
+  "author": "wjsekfghks@gmail.com",
+  "description": "hubot script for pad",
+  "dependencies": {},
+  "main": "index.coffee"
+}
